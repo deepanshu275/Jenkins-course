@@ -15,13 +15,12 @@ usermod -aG docker ubuntu
 mkdir -p /var/jenkins_home
 chown -R 1000:1000 /var/jenkins_home/
 docker run \
-  -u root \
-  --rm \
   -d \
   -p 8080:8080 \
   -p 50000:50000 \
   -v jenkins-data:/var/jenkins_home \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  --name jenkins
   jenkinsci/blueocean
 
 # show endpoint
